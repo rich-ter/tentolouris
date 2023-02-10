@@ -19,7 +19,7 @@ function fetchData(){
             .map (blog=> {
                 return `
                     <div class="card blog-post w-dyn-item">
-              <a href="#" class="blog-post-wrapper w-inline-block"><img src=${ localhost + blog.attributes.BlogImage.data.attributes.formats.small.url} alt="" class="blog-post-image">
+              <a href=${blog.id} class="blog-post-wrapper w-inline-block"><img src=${ localhost + blog.attributes.BlogImage.data.attributes.formats.small.url} alt="" class="blog-post-image">
                 <div class="card-content" >
                   <div class="blog-post-date">${blog.attributes.Date}</div>
                   <h3 class="blog-post-title">${blog.attributes.Title}</h3>
