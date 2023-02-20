@@ -1,22 +1,22 @@
 
 function fetchData(){
 
-    const localhost = 'http://localhost:1337'
-    const api_url = 'http://localhost:1337/api/blog-posts?populate=BlogImage'
+    const PROJECT_ID = "lmk4epg5";
+    const DATASET = "production";
+    
+    let QUERY = encodeURIComponent('*[_type == "post"]{title,body,mainImage}');
+    let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
-    fetch(api_url)
+    fetch(URL)
         .then(response => {
         return response.json();
     })
     .then(data => {
-        const html = data.data
-            .map (blog=> {
+        const html = data.result.map (blog=> {
                 return `
                     <div class="card blog-post w-dyn-item">
-              <a href=${`./detail_post.html?id=${blog.id}`} class="blog-post-wrapper w-inline-block"><img src=${ localhost + blog.attributes.BlogImage.data.attributes.formats.medium.url} alt="" class="blog-post-image">
                 <div class="card-content" >
-                  <div class="blog-post-date">${blog.attributes.Date}</div>
-                  <h3 class="blog-post-title">${blog.attributes.Title}</h3>
+                  <h3 class="blog-post-title">${blog.title}</h3>
                   <p id="api-date">Api excerpt</p>
                   <div class="blog-post-link-wrapper">
                     <div class="blog-post-link">διαβαστε περισσοτερα</div><img src="images/large-arrow-icon.svg" data-w-id="d4b60062-1bf3-e6ec-d67e-d5782210c8b7" alt="" class="arrow-large">
@@ -28,8 +28,9 @@ function fetchData(){
             })
             .join("")
         document.querySelector('#api-render').innerHTML = ("afterbegin", html);
-        window.addEventListener()        
     })
 };
 
+
+    
 fetchData();
