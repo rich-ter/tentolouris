@@ -35,9 +35,9 @@ function fixImageUrl(imageUrl){
 function getArticle(id) {
     const PROJECT_ID = "lmk4epg5";
     const DATASET = "production";
-    const CDN_URL = 'https://cdn.sanity.io/images/zp7mbokg/production/'
+    const CDN_URL = 'https://cdn.sanity.io/images/lmk4epg5/production/'
 
-    let QUERY = encodeURIComponent(`*[_id == "${id}"]{title,mainImage}`);
+    let QUERY = encodeURIComponent(`*[_id == "${id}"]{title,mainImage,body}`);
 
     let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
@@ -46,9 +46,10 @@ function getArticle(id) {
         return response.json();
     }).then(function (data) {
         console.log(data)
+        console.log(data.result[0].body)
         document.getElementById("article-title").innerHTML = data.result[0].title;
         // document.getElementById("publish-date").innerHTML = data.data.attributes.publishedAt;
-        document.getElementById("article-img").src = `${CDN_URL}${fixImageUrl(blog.mainImage.asset._ref)}`
+        document.getElementById("article-img").src = `${CDN_URL}${fixImageUrl(data.result[0].mainImage.asset._ref)}`
         // document.getElementById("description").innerHTML = data.data.attributes.Description;
     })
     .catch(function (err) {
