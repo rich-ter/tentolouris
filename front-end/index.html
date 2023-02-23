@@ -260,7 +260,12 @@
         <div class="form-wrapper">
           <h2 data-w-id="63e07f26-0ee3-c4ab-8f9d-b5bc872f79dd">Επικοινωνήστε μαζι μας</h2>
           <div data-w-id="138e9714-5c57-6949-ac59-14d628836324" class="w-form">
-            <form id="email-form" name="header-form" method="POST" data-netlify="true" data-name="Email Form" method="get" class="form"><label for="name" class="label">Ονοματεπώνυμο</label><input type="text" class="input w-input" maxlength="256" name="name" data-name="Name" placeholder="Το ονοματεπώνυμο σας" id="name" required=""><label for="email" class="label">Ηλεκτρονική διεύθυνση</label><input type="email" class="input w-input" maxlength="256" name="email" data-name="Email" placeholder="Ηλεκτρονική Διέθυνση" id="email" required=""><label for="Phone-Number" class="label">Τηλέφωνο επικοινωνίας</label><input type="tel" class="input w-input" maxlength="256" name="Phone-Number" data-name="Phone Number" placeholder="Τηλέφωνο επικοινωνίας" id="Phone-Number" required=""><label for="Message" class="label">Σχόλια / Μήνυμα</label><textarea id="Message" name="Message" maxlength="5000" placeholder="Μήνυμα" data-name="field" class="input text-area w-input"></textarea><input type="submit" value="Αποστολή" data-wait="Please wait..." class="button-primary default w-button"></form>
+            <form id="email-form" name="header-form" method="POST" data-netlify="true" data-name="Email Form" method="get" class="form">
+              <label for="name" class="label">Ονοματεπώνυμο</label><input type="text" class="input w-input" maxlength="256" name="name" data-name="Name" placeholder="Το ονοματεπώνυμο σας" id="name" required="">
+              <label for="email" class="label">Ηλεκτρονική διεύθυνση</label><input type="email" class="input w-input" maxlength="256" name="email" data-name="Email" placeholder="Ηλεκτρονική Διέθυνση" id="email" required="">
+              <label for="Phone-Number" class="label">Τηλέφωνο επικοινωνίας</label><input type="tel" class="input w-input" maxlength="256" name="Phone-Number" data-name="Phone Number" placeholder="Τηλέφωνο επικοινωνίας" id="Phone-Number" required="">
+              <label for="Message" class="label">Σχόλια / Μήνυμα</label><textarea id="Message" name="Message" maxlength="5000" placeholder="Μήνυμα" data-name="field" class="input text-area w-input"></textarea>
+              <input type="submit" value="Αποστολή" data-wait="Please wait..." class="button-primary default w-button"></form>
             <div class="success-message w-form-done">
               <div>Thank you! Your submission has been received!</div>
             </div>
@@ -269,6 +274,26 @@
             </div>
           </div>
         </div>
+        <form name="contact" method="POST" data-netlify="true">
+          <p>
+            <label>Your Name: <input type="text" name="name" /></label>
+          </p>
+          <p>
+            <label>Your Email: <input type="email" name="email" /></label>
+          </p>
+          <p>
+            <label>Your Role: <select name="role[]" multiple>
+                <option value="leader">Leader</option>
+                <option value="follower">Follower</option>
+              </select></label>
+          </p>
+          <p>
+            <label>Message: <textarea name="message"></textarea></label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
         <div id="w-node-_90487ff3-2747-1260-c793-eb718c16f94d-2b1169ed" class="contact-information">
           <h3 data-w-id="b4d452eb-1c38-0a28-d6a5-8805d9a0868d" class="contact-info-header">&#x27;Αλλοι τρόποι επικοινωνίας</h3>
           <div data-w-id="6876fdc2-ede6-a4af-0842-8a8576e7b82f" class="contact-buttons-wrapper">
