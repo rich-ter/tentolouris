@@ -9,6 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -29,6 +30,7 @@ export default defineType({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
+      validation: Rule => Rule.required(),
       options: {
         hotspot: true,
       },
@@ -36,18 +38,21 @@ export default defineType({
     defineField({
       name: 'categories',
       title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      type: 'reference',
+      to: {type: 'category'},
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      validation: Rule => Rule.required(),
     }),
   ],
 

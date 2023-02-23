@@ -14,20 +14,24 @@ function fetchData(){
         return removingTheSuffix
     }
 
+    function returnShortDate(date){
+    return date.slice(0,10)
+}
+
     fetch(URL)
         .then(response => {
         return response.json();
     })
     .then(data => {
-        console.log(data.result)
+        // console.log(data.result)
         const html = data.result.map (blog=> {
-            console.log(`the url of the ${blog.title} is: ${CDN_URL}${fixImageUrl(blog.mainImage.asset._ref)}`)
+            // console.log(`the url of the ${blog.title} is: ${CDN_URL}${fixImageUrl(blog.mainImage.asset._ref)}`)
                 return `
                     <div class="card blog-post w-dyn-item">
               <a href=${`./detail_post.html?id=${blog._id}`} class="blog-post-wrapper w-inline-block"><img src=${`${CDN_URL}${fixImageUrl(blog.mainImage.asset._ref)}`} alt="" class="blog-post-image">
 
                 <div class="card-content" >
-                  <div class="blog-post-date">${blog.publishedAt}</div>
+                  <div class="blog-post-date">${returnShortDate(blog.publishedAt)}</div>
                   <h3 class="blog-post-title">${blog.title}</h3>
                   <p id="api-date">Api excerpt</p>
                   <div class="blog-post-link-wrapper">

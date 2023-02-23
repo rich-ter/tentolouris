@@ -1,3 +1,4 @@
+
 function checkForArticle() {
     const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get('id');
@@ -32,12 +33,16 @@ function fixImageUrl(imageUrl){
     return removingTheSuffix
 }
 
+function returnShortDate(date){
+    return date.slice(0,10)
+}
+
 function getArticle(id) {
     const PROJECT_ID = "lmk4epg5";
     const DATASET = "production";
     const CDN_URL = 'https://cdn.sanity.io/images/lmk4epg5/production/'
 
-    let QUERY = encodeURIComponent(`*[_id == "${id}"]{title,mainImage,body}`);
+    let QUERY = encodeURIComponent(`*[_id == "${id}"]{title,mainImage,body, publishedAt,'category_title': categories->title }`);
 
     let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
@@ -45,12 +50,12 @@ function getArticle(id) {
     fetch(URL).then(function (response) {
         return response.json();
     }).then(function (data) {
-        console.log(data)
-        console.log(data.result[0].body)
+        console.log(data.result)
+        document.getElementById("article-category").innerHTML = data.result[0].category_title;
         document.getElementById("article-title").innerHTML = data.result[0].title;
-        // document.getElementById("publish-date").innerHTML = data.data.attributes.publishedAt;
+        document.getElementById("publish-date").innerHTML = returnShortDate(data.result[0].publishedAt);
         document.getElementById("article-img").src = `${CDN_URL}${fixImageUrl(data.result[0].mainImage.asset._ref)}`
-        // document.getElementById("description").innerHTML = data.data.attributes.Description;
+        document.getElementById("description").innerHTML = toPlainText(data.result[0].body);
     })
     .catch(function (err) {
         console.warn('Something went wrong.', err);
