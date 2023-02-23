@@ -19442,7 +19442,7 @@ Webflow.define('forms', module.exports = function ($, _) {
     reset(data);
     var wrap = $el.closest('div.w-form');
     data.done = wrap.find('> .w-form-done');
-    data.fail = wrap.find('> .w-form-fail');
+    // data.fail = wrap.find('> .w-form-fail');
     data.fileUploads = wrap.find('.w-file-upload');
     data.fileUploads.each(function (j) {
       initFileUpload(j, data);
